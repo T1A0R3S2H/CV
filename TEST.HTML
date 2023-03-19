@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ARE YOU DUMB?</title>
+	<style>
+		body {
+			background-color: #f8f8f8;
+			text-align: center;
+		}
+		h1 {
+			font-size: 48px;
+			margin-top: 100px;
+		}
+		.button-container {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		button {
+			font-size: 24px;
+			padding: 20px 40px;
+			margin-top: 50px;
+			background-color: #008CBA;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: all 0.5s ease;
+		}
+		button:hover {
+			background-color: #005F6B;
+		}
+	</style>
+</head>
+<body>
+	<h1>ARE YOU DUMB?</h1>
+	<div class="button-container">
+		<button id="no-btn">NO</button>
+		<button id="yes-btn">YES</button>
+	</div>
+	<script>
+		const noBtn = document.getElementById("no-btn");
+		const yesBtn = document.getElementById("yes-btn");
+
+		noBtn.addEventListener("click", (event) => {
+			const x = event.clientX - noBtn.clientWidth / 2;
+			const y = event.clientY - noBtn.clientHeight / 2;
+			noBtn.style.transform = `translate(${x}px, ${y}px)`;
+			const maxX = window.innerWidth - noBtn.clientWidth;
+			const maxY = window.innerHeight - noBtn.clientHeight;
+			if (x < 0 || x > maxX || y < 0 || y > maxY) {
+				noBtn.style.transform = `translate(${maxX}px, ${maxY}px)`;
+			}
+		});
+
+		yesBtn.addEventListener("click", () => {
+			alert("I KNEW IT!");
+		});
+	</script>
+</body>
+</html>
